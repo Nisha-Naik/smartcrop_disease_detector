@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Don't rewrite if the request is for a real file or directory
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Proxy all requests to your Node.js/Next.js server
+  RewriteRule ^(.*)$ http://localhost:3000/$1 [P,QSA,L]
+</IfModule>
